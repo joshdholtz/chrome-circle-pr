@@ -14,6 +14,8 @@ All you need to do is to make sure that you set the correct configurations in yo
 { "RokkinCat/gym-oclock-ios": "my-super-secret-token" }
 ```
 
+![](screenshots/screenshot_9.png)
+
 ## The Process
 Your build is only a few simple steps away :raised_hands:
 
