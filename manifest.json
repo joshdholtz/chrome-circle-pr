@@ -1,0 +1,34 @@
+{
+  "manifest_version": 2,
+
+  "name": "CirclePR (for CircleCI)",
+  "short_name": "CirclePR",
+  "description": "This extension kicks off a Github Pull Request specific build on CircleCI",
+  "version": "0.1.1",
+  "author": "Josh Holtz",
+
+  "icons": { "16": "icon16.png",
+    "48": "icon48.png",
+    "128": "icon128.png" },
+
+  "options_ui": {
+    "page": "options.html",
+    "chrome_style": true
+  },
+
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_popup": "popup.html"
+  },
+  "content_scripts": [{
+    "matches": ["*://github.com/*"],
+    "js": ["content.js"]
+  }],
+  "permissions": [
+    "activeTab",
+    "storage",
+    "https://ajax.googleapis.com/",
+		"https://circleci.com/"
+  ]
+}
