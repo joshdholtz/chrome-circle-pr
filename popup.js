@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function() {
       pull = matches[3];
 
       var button = "<button id='kickOffButton'>Make build for PR " + pull + "</button>"
-      var textfield = "<input id='parameters' type='text'></intput"
+      var textfield = "<input id='parameters' type='text' placeholder='Build params as JSON (optional)'></intput"
       renderStatus(button + textfield);
 
       document.getElementById('kickOffButton').addEventListener('click', function () {
