@@ -1,6 +1,8 @@
 # ![](icon48.png) CirclePR
 `CirclePR` is an unofficial Chrome Extension for CircleCI (https://circleci.com/). It sends a parameterized build to your CircleCI project from the push of a button while viewing your Pull Request on Github.
 
+[Get it on the Chrome Web Store :fist:](https://chrome.google.com/webstore/detail/circlepr-for-circleci/hcinmdnhmbfnfaaodeehiipiaekdkjhj)
+
 ## Example Usage
 Use the extension to kick off a build of a new feature for an iOS app to CircleCI. CircleCI builds the iOS project using Fastlane and then sends the new build to HockeyApp for your client, stakeholders, or QA team to test.
 
