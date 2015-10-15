@@ -28,7 +28,7 @@ A new tab will open for the CircleCI build that was started
 ![](screenshots/screenshot_3.png)
 
 ### Step 4 - Admire it
-![](screenshots/screenshot_4.png)
+![](screenshots/screenshot_5.png)
 
 ## Using Custom Build parameters (Optional)
 Sometimes you may want to send up custom build parameters to build for a different environment (or whatever else you may dream up). `CirclePR` makes this pretty painless (except for the writing of a JSON string :wink:)
