@@ -146,7 +146,7 @@ function showListOfBuilds(message) {
       var buildsHTML = ""
 
       buildsHTML += "<table><tbody>";
-      buildsHTML += "<tr><th>#</th><th>Status</th><th>Outcome</th><th colspan=2>Action</th></tr>"
+      buildsHTML += "<tr><th>Build</th><th>Branch</th><th>Log</th><th>Status</th><th>Outcome</th><th colspan=2>Action</th></tr>"
       for (var key in obj) {
         var build = obj[key]
 
@@ -157,6 +157,7 @@ function showListOfBuilds(message) {
         var buildNum = build["build_num"];
         var pullRequestUrls = build["pull_request_urls"];
         var subject = build["subject"];
+        var buildBranch = build["branch"];
 
         if (outcome === null) {
           outcome = "running";
@@ -167,6 +168,8 @@ function showListOfBuilds(message) {
 
         buildsHTML += "<tr>";
         buildsHTML += "<td>" + buildNum + "</td>";
+        buildsHTML += "<td>" + buildBranch + "</td>";
+        buildsHTML += "<td>" + subject + "</td>";
         buildsHTML += "<td>" + status + "</td>";
         buildsHTML += "<td>" + outcome + "</td>";
         if (outcome === "running") {
@@ -174,6 +177,7 @@ function showListOfBuilds(message) {
           buildsHTML += "<td><button id='" + cancelButtonID + "' type='button' text='Cancel'>Cancel</button></td>";
         } else {
           buildsHTML += "<td><button id='" + viewButtonID + "' type='button' text='View')'>View</button></td>";
+          buildsHTML += "<td><td/>";
         }
         buildsHTML += "</tr>";
 
