@@ -1,3 +1,4 @@
+// Because we gotta know
 function isJsonString(str) {
     try {
         JSON.parse(str);
@@ -7,9 +8,8 @@ function isJsonString(str) {
     return true;
 }
 
-// Saves options to chrome.storage.sync.
+// Saves options to chrome.storage.sync
 function save_options() {
-	alert("hi");
   var config = document.getElementById('config').value;
 	if (isJsonString(config)) {
 	  chrome.storage.sync.set({
@@ -32,10 +32,8 @@ function save_options() {
 	}
 }
 
-// Restores select box and checkbox state using the preferences
-// stored in chrome.storage.
+// Restores default options for config
 function restore_options() {
-  // Use default value color = 'red' and likesColor = true.
   chrome.storage.sync.get({
     config: '',
   }, function(items) {
@@ -43,5 +41,4 @@ function restore_options() {
   });
 }
 document.addEventListener('DOMContentLoaded', restore_options);
-document.getElementById('save').addEventListener('click',
-    save_options);
+document.getElementById('save').addEventListener('click', save_options);
