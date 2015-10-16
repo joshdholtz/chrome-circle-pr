@@ -21,14 +21,15 @@ Your build is only a few simple steps away :raised_hands:
 ![](screenshots/screenshot_0.png)
 
 ### Step 2 - Click the CirclePR button
-![](screenshots/screenshot_2.png)
+![](screenshots/screenshot_1.png)
 
 ### Step 3 - Click the "Make build for PR #" button
-A new tab will open for the CircleCI build that was started
-![](screenshots/screenshot_3.png)
+The new build will be started and shown in the extension window
+![](screenshots/screenshot_2.png)
 
-### Step 4 - Admire it
-![](screenshots/screenshot_5.png)
+### Step 4 - Click the "View" button
+Admire it
+![](screenshots/screenshot_3.png)
 
 ## Using Custom Build parameters (Optional)
 Sometimes you may want to send up custom build parameters to build for a different environment (or whatever else you may dream up). `CirclePR` makes this pretty painless (except for the writing of a JSON string :wink:)
