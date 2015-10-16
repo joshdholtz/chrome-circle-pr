@@ -37,14 +37,17 @@ function sendRequest(url, method, body, callback, errorCallback) {
   }
 }
 
+// Renders top half to popup
 function renderStatus(statusText) {
   document.getElementById('status').innerHTML = statusText;
 }
 
+// Render bottom half of popup
 function renderBuilds(buildsHTML) {
   document.getElementById('builds').innerHTML = buildsHTML;
 }
 
+// This we need to use later
 var githubPullRequestUrl = null;
 var owner = null;
 var repo = null;
@@ -55,10 +58,12 @@ document.addEventListener('DOMContentLoaded', function() {
 
     githubPullRequestUrl = url;
 
+    // Gets the parts of the endpoint of the pages url says regex is hard (and not fun)
     var el = document.createElement('a');
     el.href = url;
     var parts = el.pathname.split("/");
 
+    // Makes sure we can get the owner and repo base off of the url
     if (parts.length >= 3) {
       owner = parts[1];
       repo = parts[2];
@@ -72,6 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (parts.length >= 5 && parts[3] === "pull") {
       pull = parts[4];
 
+      // Creates the "Make build of PR" button
       var button = "<button id='kickOffButton'>Make build for PR " + pull + "</button>"
       var textfield = "<input id='parameters' type='text' placeholder='Build params as JSON (optional)'></intput"
       renderStatus(button + textfield);
@@ -89,6 +95,7 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+// Shows a list of most recent builds from CircleCI
 function showListOfBuilds(message) {
 
   renderBuilds("Loading list of recent CircleCI builds...");
