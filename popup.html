@@ -31,11 +31,21 @@
         font-weight: 500;
         line-height: 12.4px;
       }
+      table {
+        border-collapse: collapse;
+      }
+      td {
+        font-size: 13px;
+      }
+      tr td, tr th {
+        border-bottom: 1px solid #FAFAFA;
+        padding: 10px;
+      }
       #status {
         white-space: pre;
         text-overflow: ellipsis;
         overflow: none;
-        width: 300px;
+        width: 600px;
       }
     </style>
 
@@ -43,5 +53,9 @@
   </head>
   <body>
     <div id="status"></div>
+    <hr/>
+    <div id="builds">
+      Loading list of recent CircleCI builds...
+    </div>
   </body>
 </html>
