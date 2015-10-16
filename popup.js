@@ -71,6 +71,8 @@ document.addEventListener('DOMContentLoaded', function() {
       setTimeout(function() {
         chrome.tabs.sendMessage(tab.id, {}, showListOfBuilds);
       }, 500);
+    } else {
+      renderBuilds("This is not a Github page...");
     }
 
     // Verify that we are on a github pull request with regex on URL
@@ -305,11 +307,18 @@ function doStuffWithDOM(message) {
 
     // Send the parameterized build to CicleCI
     sendRequest(circleURL, 'POST', body, function(response) {
-      renderStatus('Stated build for - ' + owner + "/" + repo +"/tree/" + branch);
+      renderStatus('Started build for - ' + owner + "/" + repo +"/tree/" + branch);
 
-      var obj = JSON.parse(response.responseText);
-      var buildUrl = obj['build_url'];
-      chrome.tabs.create({ url: buildUrl });
+      // var obj = JSON.parse(response.responseText);
+      // var buildUrl = obj['build_url'];
+      // chrome.tabs.create({ url: buildUrl });
+
+      setTimeout(function() {
+        getCurrentTabUrl(function(url, tab) {
+          chrome.tabs.sendMessage(tab.id, {}, showListOfBuilds);
+        });
+      }, 500);
+
     }, function(errorMessage) {
       renderStatus('Error :( - ' + errorMessage);
     });

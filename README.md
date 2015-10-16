@@ -18,7 +18,7 @@ All you need to do is to make sure that you set the correct configurations in yo
 Your build is only a few simple steps away :raised_hands:
 
 ### Step 1 - Navigate to Github Pull Request
-![](screenshots/screenshot_1.png)
+![](screenshots/screenshot_0.png)
 
 ### Step 2 - Click the CirclePR button
 ![](screenshots/screenshot_2.png)
