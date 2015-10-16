@@ -72,7 +72,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
       setTimeout(function() {
         chrome.tabs.sendMessage(tab.id, {}, showListOfBuilds);
-      }, 1000);
+      }, 500);
     } else {
       console.log("doesn't any github anything")
     }
@@ -90,6 +90,7 @@ document.addEventListener('DOMContentLoaded', function() {
       renderStatus(button + textfield);
 
       document.getElementById('kickOffButton').addEventListener('click', function () {
+        document.getElementById('kickOffButton').disabled = true;
         var parameters = document.getElementById("parameters").value
         chrome.tabs.sendMessage(tab.id, { parameters: parameters }, doStuffWithDOM);
       });
@@ -103,8 +104,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 function showListOfBuilds(message) {
 
+  renderBuilds("Loading list of recent CircleCI builds...");
+
   var branch = message.branch
-  console.log("Branch", branch);
 
   var circleToken = null;
 
@@ -205,8 +207,8 @@ function showListOfBuilds(message) {
             }
 
             if (cancelBtn) {
-              cancelBtn.addEventListener('click', function() {
-                cancelCircleBuild(build)
+              cancelBtn.addEventListener('click', function(event) {
+                cancelCircleBuild(build, event.target)
               });
             }
           }());
@@ -227,7 +229,9 @@ function openCircleBuild(build) {
   chrome.tabs.create({ url: buildUrl });
 }
 
-function cancelCircleBuild(build) {
+function cancelCircleBuild(build, element) {
+
+  element.disabled = true
 
   var buildUrl = build["build_url"];
   var owner = build["username"];
@@ -250,7 +254,13 @@ function cancelCircleBuild(build) {
 
     var circleURL = "https://circleci.com/api/v1/project/" + owner + "/" + repo +"/" + buildNum + "/cancel?circle-token=" + circleToken;
     sendRequest(circleURL, 'POST', null, function(response) {
-      chrome.tabs.create({ url: buildUrl });
+
+      setTimeout(function() {
+        getCurrentTabUrl(function(url, tab) {
+          chrome.tabs.sendMessage(tab.id, {}, showListOfBuilds);
+        });
+      }, 500);
+
     });
 
   });
