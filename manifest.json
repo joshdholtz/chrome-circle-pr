@@ -3,7 +3,7 @@
 
   "name": "CirclePR (for CircleCI)",
   "short_name": "CirclePR",
-  "description": "This extension kicks off a Github Pull Request specific build on CircleCI",
+  "description": "View and cancel CircleCI builds from Github and start Pull Request specific builds straight to CircleCI",
   "version": "1.1.0",
   "author": "Josh Holtz",
 
