@@ -31,10 +31,8 @@ function sendRequest(url, method, body, callback, errorCallback) {
     errorCallback('Network error.');
   };
   if (body) {
-    console.log("Sending body");
     x.send(JSON.stringify(body));
   } else {
-    console.log("Sending no body");
     x.send();
   }
 }
@@ -61,29 +59,18 @@ document.addEventListener('DOMContentLoaded', function() {
     el.href = url;
     var parts = el.pathname.split("/");
 
-    console.log("parts", parts);
-
     if (parts.length >= 3) {
       owner = parts[1];
       repo = parts[2];
 
-      console.log("owner b", owner);
-      console.log("repo b", repo);
-
       setTimeout(function() {
         chrome.tabs.sendMessage(tab.id, {}, showListOfBuilds);
       }, 500);
-    } else {
-      console.log("doesn't any github anything")
     }
 
     // Verify that we are on a github pull request with regex on URL
     if (parts.length >= 5 && parts[3] === "pull") {
       pull = parts[4];
-
-      console.log("owner", owner);
-      console.log("repo", repo);
-      console.log("pull", pull);
 
       var button = "<button id='kickOffButton'>Make build for PR " + pull + "</button>"
       var textfield = "<input id='parameters' type='text' placeholder='Build params as JSON (optional)'></intput"
