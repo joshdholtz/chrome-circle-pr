@@ -102,7 +102,8 @@ function showListOfBuilds(message) {
 
   renderBuilds("Loading list of recent CircleCI builds...");
 
-  var branch = message.branch
+
+  var branch = (message || {}).branch
 
   var circleToken = null;
 
@@ -131,7 +132,7 @@ function showListOfBuilds(message) {
       var obj = JSON.parse(response.responseText);
       for (var key in obj) {
         var build = obj[key]
-        var pullRequestUrls = build["pull_request_urls"];
+        var pullRequestUrls = build["pull_request_urls"] || [];
 
         var indexOfPR = pullRequestUrls.indexOf(githubPullRequestUrl)
         if (indexOfPR > -1 || pull === null) {

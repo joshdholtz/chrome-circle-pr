@@ -4,7 +4,7 @@
   "name": "CirclePR (for CircleCI)",
   "short_name": "CirclePR",
   "description": "View and cancel CircleCI builds from Github and start Pull Request specific builds straight to CircleCI",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "author": "Josh Holtz",
 
   "icons": { "16": "icon16.png",
